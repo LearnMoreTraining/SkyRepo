@@ -33,10 +33,19 @@ public class LoginSteps {
         driver.findElement(By.id("Login")).click();
     }
 
-    @Then("user validate the error message")
-    public void validateErrorMessage() {
 
-        driver.findElement(By.id("error")).getText();
+    @Then("user validate the error message {string}")
+    public void validateErrorMessage(String expectedError) {
+
+      String actualErrorMessage =  driver.findElement(By.id("error")).getText(); //actual result
+        System.out.println(actualErrorMessage);
+
+        if(expectedError.equals(actualErrorMessage)){
+            System.out.println("error message match");
+        }
+        else{
+            System.out.println("not match");
+        }
     }
 
     @Then("user should navigate to homepage")
