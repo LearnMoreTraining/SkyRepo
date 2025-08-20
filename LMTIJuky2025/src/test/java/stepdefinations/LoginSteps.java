@@ -7,6 +7,7 @@ import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import pageobjects.SalesforceLoginPage;
 
 public class LoginSteps {
 
@@ -15,8 +16,10 @@ public class LoginSteps {
     @When("user enter the user name {string} and password {string}")
     public void enterUserName(String userName , String password){
 
-        driver.findElement(By.id("username")).sendKeys(userName);
-        driver.findElement(By.name("pw")).sendKeys(password);
+        SalesforceLoginPage loginPage = new SalesforceLoginPage();
+        loginPage.enterUserName(userName);
+        loginPage.enterPassword(password);
+
     }
 
     @Given("user navigates to the login page of salesforce application")
