@@ -8,14 +8,13 @@ import org.openqa.selenium.safari.SafariDriver;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
 public class BrowserBase {
 
     WebDriver driver;
-    public void launchBrowser() throws IOException {
+    public WebDriver launchBrowser() throws IOException {
 
         File file = new File("src/main/resources/configurations/frameworkconfig.properties");
         FileInputStream fis = new FileInputStream(file); // read
@@ -35,5 +34,7 @@ public class BrowserBase {
         }
 
         driver.get(prop.getProperty("environment"));
+
+        return driver;
     }
 }

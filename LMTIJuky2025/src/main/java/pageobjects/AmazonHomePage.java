@@ -13,6 +13,7 @@ public class AmazonHomePage {
     public void selectCategoryDropdownBasedOnValue(String value){
         Select categoryDropdown = new Select(categoryElement);
         categoryDropdown.selectByValue(value);
+
     }
 
     public void selectCategoryDropdownBasedOnIndex(int index){

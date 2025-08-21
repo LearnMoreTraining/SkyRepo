@@ -12,6 +12,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 import pageobjects.AmazonHomePage;
 import pageobjects.AmazonSearchResultPage;
+import utilities.BrowserBase;
+
+import java.io.IOException;
 
 public class AmazonSteps {
 
@@ -19,15 +22,15 @@ public class AmazonSteps {
     WebElement dropdown;
 
     @Given("user navigates to amazon homepage")
-    public void amazonHomePage(){
-        driver = new ChromeDriver();
-        driver.get("https://www.amazon.in/");
+    public void amazonHomePage() throws IOException {
+        BrowserBase bb = new BrowserBase();
+        bb.launchBrowser();
     }
 
     @When("user extract the dropdown values")
     public void userExtractTheDropdownValues() {
 
-        AmazonHomePage amazonHomePage = new AmazonHomePage();
+        AmazonHomePage amazonHomePage = new AmazonHomePage(); //look for the constructor
         amazonHomePage.extractDropdownValue();
     }
 
