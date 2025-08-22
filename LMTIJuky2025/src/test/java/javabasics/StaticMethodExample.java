@@ -8,12 +8,16 @@ public class StaticMethodExample {
 
         StaticMethodExample.m2();
         System.out.println(a);
+        StaticMethodExample sm = new StaticMethodExample();
+        sm.m1();
 
     }
 
     public void m1(){
+        int a = 500;
         System.out.println("a");
         System.out.println(a);
+        System.out.println(this.a);
     }
 
     public static void m2(){

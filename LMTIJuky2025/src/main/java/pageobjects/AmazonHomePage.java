@@ -8,15 +8,21 @@ import org.openqa.selenium.support.ui.Select;
 public class AmazonHomePage {
 
     WebDriver driver ; // null knowlege
-    WebElement categoryElement = driver.findElement(By.id("searchDropdownBox"));
+
+
+    public AmazonHomePage(WebDriver driver){
+        this.driver = driver;
+    }
 
     public void selectCategoryDropdownBasedOnValue(String value){
+        WebElement categoryElement = driver.findElement(By.id("searchDropdownBox"));
         Select categoryDropdown = new Select(categoryElement);
         categoryDropdown.selectByValue(value);
 
     }
 
     public void selectCategoryDropdownBasedOnIndex(int index){
+        WebElement categoryElement = driver.findElement(By.id("searchDropdownBox"));
         Select categoryDropdown = new Select(categoryElement);
         categoryDropdown.selectByIndex(index);
     }
@@ -31,6 +37,7 @@ public class AmazonHomePage {
     }
 
     public void extractDropdownValue(){
+        WebElement categoryElement = driver.findElement(By.id("searchDropdownBox"));
         categoryElement = driver.findElement(By.xpath("//select[@id='searchDropdownBox']"));
         int dropdownSize = categoryElement.findElements(By.tagName("option")).size();
         System.out.println(dropdownSize);

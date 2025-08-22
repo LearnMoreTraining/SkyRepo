@@ -9,13 +9,18 @@ public class ConstructorExample {
        }
 
         public ConstructorExample(int a){
-        a =1;
+
+           this.a = a;
      }
+
+    public ConstructorExample(String a){
+
+    }
 
 
     public static void main(String[] args) {
 
-        ConstructorExample c = new ConstructorExample(2);
+        ConstructorExample c = new ConstructorExample("lmti");
             System.out.println(a);
     }
 }
