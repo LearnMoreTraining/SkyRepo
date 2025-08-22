@@ -12,22 +12,25 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 import pageobjects.AmazonHomePage;
 import pageobjects.AmazonSearchResultPage;
+import utilities.BrowserBase;
+
+import java.io.IOException;
 
 public class AmazonSteps {
 
     WebDriver driver ;
-    WebElement dropdown;
+
 
     @Given("user navigates to amazon homepage")
-    public void amazonHomePage(){
-        driver = new ChromeDriver();
-        driver.get("https://www.amazon.in/");
+    public void amazonHomePage() throws IOException {
+        BrowserBase bb = new BrowserBase();
+       driver = bb.launchBrowser();
     }
 
     @When("user extract the dropdown values")
     public void userExtractTheDropdownValues() {
 
-        AmazonHomePage amazonHomePage = new AmazonHomePage();
+        AmazonHomePage amazonHomePage = new AmazonHomePage(driver); //look for the constructor
         amazonHomePage.extractDropdownValue();
     }
 
@@ -38,7 +41,7 @@ public class AmazonSteps {
 
     @And("user select the dropdownvalue")
     public void selectValue() {
-        AmazonHomePage amazonHomePage = new AmazonHomePage();
+        AmazonHomePage amazonHomePage = new AmazonHomePage(driver);
         amazonHomePage.selectCategoryDropdownBasedOnValue("search-alias=appliances");
     }
 
@@ -49,7 +52,7 @@ public class AmazonSteps {
         // input inject
         // click search icon
 
-        AmazonHomePage homePage = new AmazonHomePage();
+        AmazonHomePage homePage = new AmazonHomePage(driver);
         homePage.selectCategoryDropdownBasedOnIndex(8);
         homePage.enterProductName("iphone");
         homePage.clickIcon();
