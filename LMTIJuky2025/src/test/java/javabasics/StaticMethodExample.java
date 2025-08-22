@@ -7,7 +7,6 @@ public class StaticMethodExample {
     public static void main(String[] args) {
 
         StaticMethodExample.m2();
-        System.out.println(a);
         StaticMethodExample sm = new StaticMethodExample();
         sm.m1();
 
