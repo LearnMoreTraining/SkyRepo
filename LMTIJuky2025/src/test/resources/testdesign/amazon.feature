@@ -12,5 +12,9 @@ Feature: Amazon Home page validation
     When user select baby value from the dropdown and navigate to search page
     And sort the product and select the chepest product
 
-
+    @amazon09
+  Scenario: Handle mouse action
+    Given user navigates to amazon homepage
+    When user clicks the baby wishlist link
+    Then verify the page navigation
 
