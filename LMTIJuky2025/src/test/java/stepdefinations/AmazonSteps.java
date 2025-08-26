@@ -65,4 +65,16 @@ public class AmazonSteps {
         searchResultPage.sortProduct();
         searchResultPage.selectProduct();
     }
+
+    @Then("verify the page navigation")
+    public void verifyThePageNavigation() {
+
+    }
+
+    @When("user clicks the baby wishlist link")
+    public void userClicksTheBabyWishlistLink() {
+
+        AmazonHomePage homePage = new AmazonHomePage(driver);
+        homePage.clickBabyWishList();
+    }
 }

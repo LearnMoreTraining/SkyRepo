@@ -3,6 +3,7 @@ package pageobjects;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
 public class AmazonHomePage {
@@ -45,6 +46,15 @@ public class AmazonHomePage {
             String dropdownValue = categoryElement.findElements(By.tagName("option")).get(i).getText();
             System.out.println(dropdownValue);
         }
+    }
+
+    public void clickBabyWishList(){
+        WebElement element = driver.findElement(By.id("nav-link-accountList"));
+        Actions action = new Actions(driver);
+        action.clickAndHold(element).build().perform();
+       // driver.findElement(By.xpath("//span[text()='Baby Wishlist']")).click();
+        driver.findElement(By.linkText("Baby Wishlist")).click();
+       // driver.findElement(By.partialLinkText("got Your Passwo")).click();
     }
 
 }
