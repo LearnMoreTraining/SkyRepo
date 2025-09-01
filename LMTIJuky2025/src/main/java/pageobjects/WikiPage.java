@@ -2,7 +2,9 @@ package pageobjects;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class WikiPage {
     WebDriver driver ;
@@ -10,15 +12,15 @@ public class WikiPage {
         this.driver = driver;
     }
 
-    public void getShareHoldersValue(){
-
+    public List<String> getShareHoldersValue(){
+        List<String> shareholderValue = new ArrayList<String>();
       //  WebElement tableElement = driver.findElement(By.className("wikitable sortable jquery-tablesorter"));
        // WebElement tableElement = driver.findElement(By.xpath("//table[@class='wikitable sortable jquery-tablesorter']/child::tbody"));
         int size= driver.findElements(By.xpath("//table[@class='wikitable sortable jquery-tablesorter']/child::tbody/child::tr/child::td[1]")).size();
         for(int i =0; i < size ; i++){
-           String val= driver.findElements(By.xpath("//table[@class='wikitable sortable jquery-tablesorter']/child::tbody/child::tr/child::td[1]")).get(i).getText();
-            System.out.println(val);
+            shareholderValue.add(driver.findElements(By.xpath("//table[@class='wikitable sortable jquery-tablesorter']/child::tbody/child::tr/child::td[1]")).get(i).getText());
         }
+        return shareholderValue;
     }
 
     public void getShareHoldingValue(){
@@ -31,5 +33,10 @@ public class WikiPage {
 
       }
 
+    }
+
+    public String getCellValue(int rowIndex, int columnIndex){
+      String val =  driver.findElement(By.xpath("//table[@class='wikitable sortable jquery-tablesorter']/child::tbody/child::tr["+rowIndex+"]/child::td["+columnIndex+"]")).getText();
+        return val;
     }
 }

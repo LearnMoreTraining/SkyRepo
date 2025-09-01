@@ -13,6 +13,7 @@ import org.openqa.selenium.support.ui.Select;
 import pageobjects.AmazonHomePage;
 import pageobjects.AmazonSearchResultPage;
 import utilities.BrowserBase;
+import utilities.PageObjectManager;
 
 import java.io.IOException;
 
@@ -30,8 +31,12 @@ public class AmazonSteps {
     @When("user extract the dropdown values")
     public void userExtractTheDropdownValues() {
 
-        AmazonHomePage amazonHomePage = new AmazonHomePage(driver); //look for the constructor
-        amazonHomePage.extractDropdownValue();
+//        AmazonHomePage amazonHomePage = new AmazonHomePage(driver); //look for the constructor
+//        System.out.println( amazonHomePage.extractDropdownValue());
+
+        PageObjectManager pom = new PageObjectManager(driver);
+        pom.getAmazonHomePage().extractDropdownValue();
+        pom.getAmazonProductPage();
     }
 
     @Then("validate the dropdown vaues")

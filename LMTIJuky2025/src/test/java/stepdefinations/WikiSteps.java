@@ -24,5 +24,6 @@ public class WikiSteps {
         WikiPage wikiPage = new WikiPage(driver);
         wikiPage.getShareHoldersValue();
         wikiPage.getShareHoldingValue();
+        wikiPage.getCellValue(2,1);
     }
 }

@@ -16,6 +16,14 @@ public class ArrayExample {
 
         System.out.println(name.length);
 
+        int [] g = new int[3];
+        g[0] = 45;
+        g[1] = 55;
+        g[2] = 66;
+        g[3] = 100;
+
+
+
 
     }
 }

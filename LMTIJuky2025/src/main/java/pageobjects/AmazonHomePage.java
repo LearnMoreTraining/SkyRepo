@@ -6,6 +6,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class AmazonHomePage {
 
     WebDriver driver ; // null knowlege
@@ -37,15 +40,17 @@ public class AmazonHomePage {
         driver.findElement(By.xpath("//input[@id='nav-search-submit-button']")).click();
     }
 
-    public void extractDropdownValue(){
-        WebElement categoryElement = driver.findElement(By.id("searchDropdownBox"));
+    public List<String> extractDropdownValue(){
+        List<String> value = new ArrayList<String>(); // emptylist
+                WebElement categoryElement = driver.findElement(By.id("searchDropdownBox"));
         categoryElement = driver.findElement(By.xpath("//select[@id='searchDropdownBox']"));
         int dropdownSize = categoryElement.findElements(By.tagName("option")).size();
         System.out.println(dropdownSize);
         for(int i=0 ; i < dropdownSize ; i++ ){
             String dropdownValue = categoryElement.findElements(By.tagName("option")).get(i).getText();
-            System.out.println(dropdownValue);
+           value.add(dropdownValue);
         }
+        return value;
     }
 
     public void clickBabyWishList(){
