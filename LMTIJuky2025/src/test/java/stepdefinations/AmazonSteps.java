@@ -20,6 +20,7 @@ import java.io.IOException;
 public class AmazonSteps {
 
     WebDriver driver ;
+    PageObjectManager pom;
 
 
     @Given("user navigates to amazon homepage")
@@ -34,9 +35,8 @@ public class AmazonSteps {
 //        AmazonHomePage amazonHomePage = new AmazonHomePage(driver); //look for the constructor
 //        System.out.println( amazonHomePage.extractDropdownValue());
 
-        PageObjectManager pom = new PageObjectManager(driver);
+        pom = new PageObjectManager(driver);
         pom.getAmazonHomePage().extractDropdownValue();
-        pom.getAmazonProductPage();
     }
 
     @Then("validate the dropdown vaues")
@@ -46,8 +46,10 @@ public class AmazonSteps {
 
     @And("user select the dropdownvalue")
     public void selectValue() {
-        AmazonHomePage amazonHomePage = new AmazonHomePage(driver);
-        amazonHomePage.selectCategoryDropdownBasedOnValue("search-alias=appliances");
+//        AmazonHomePage amazonHomePage = new AmazonHomePage(driver);
+//        amazonHomePage.selectCategoryDropdownBasedOnValue("search-alias=appliances");
+        pom.getAmazonHomePage().selectCategoryDropdownBasedOnValue("search-alias=appliances");
+
     }
 
     @When("user select baby value from the dropdown and navigate to search page")
@@ -57,11 +59,14 @@ public class AmazonSteps {
         // input inject
         // click search icon
 
-        AmazonHomePage homePage = new AmazonHomePage(driver);
-        homePage.selectCategoryDropdownBasedOnIndex(8);
-        homePage.enterProductName("iphone");
-        homePage.clickIcon();
+//        AmazonHomePage homePage = new AmazonHomePage(driver);
+//        homePage.selectCategoryDropdownBasedOnIndex(8);
+//        homePage.enterProductName("iphone");
+//        homePage.clickIcon();
 
+        pom.getAmazonHomePage().selectCategoryDropdownBasedOnIndex(8);
+        pom.getAmazonHomePage().enterProductName("iphone");
+        pom.getAmazonHomePage().clickIcon();
     }
 
     @And("sort the product and select the chepest product")

@@ -6,6 +6,11 @@ import org.openqa.selenium.WebDriver;
 public class SalesforceLoginPage {
     WebDriver driver;
 
+    public SalesforceLoginPage(WebDriver driver) {
+
+        this.driver = driver;
+    }
+
     public void enterUserName(String userName){
       //  driver.findElement(By.id("username")).sendKeys(userName);
 

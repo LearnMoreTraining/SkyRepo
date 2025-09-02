@@ -3,6 +3,7 @@ package utilities;
 import org.openqa.selenium.WebDriver;
 import pageobjects.AmazonHomePage;
 import pageobjects.AmazonProductPage;
+import pageobjects.SalesforceLoginPage;
 
 public class PageObjectManager {
 
@@ -16,7 +17,14 @@ public class PageObjectManager {
         return homePage;
     }
 
-    public void getAmazonProductPage(){
+    public AmazonProductPage getAmazonProductPage(){
         AmazonProductPage productPage = new AmazonProductPage(driver);
+        return productPage;
+    }
+
+    public SalesforceLoginPage getSalesforceLoginPage(){
+
+        SalesforceLoginPage loginPage = new SalesforceLoginPage(driver);
+        return loginPage;
     }
 }

@@ -16,7 +16,7 @@ public class LoginSteps {
     @When("user enter the user name {string} and password {string}")
     public void enterUserName(String userName , String password){
 
-        SalesforceLoginPage loginPage = new SalesforceLoginPage();
+        SalesforceLoginPage loginPage = new SalesforceLoginPage(driver);
         loginPage.enterUserName(userName);
         loginPage.enterPassword(password);
 
