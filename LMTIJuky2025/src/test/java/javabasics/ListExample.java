@@ -20,5 +20,9 @@ public class ListExample {
         System.out.println(l);
 
         System.out.println(l.get(0));
+
+        for(int k:l){
+            System.out.println(k);
+        }
     }
 }
