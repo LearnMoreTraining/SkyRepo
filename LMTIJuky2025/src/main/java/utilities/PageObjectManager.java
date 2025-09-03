@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import pageobjects.AmazonHomePage;
 import pageobjects.AmazonProductPage;
 import pageobjects.SalesforceLoginPage;
+import pageobjects.WikiPage;
 
 public class PageObjectManager {
 
@@ -26,5 +27,10 @@ public class PageObjectManager {
 
         SalesforceLoginPage loginPage = new SalesforceLoginPage(driver);
         return loginPage;
+    }
+
+    public WikiPage getWikiPage(){
+        WikiPage wikiPage = new WikiPage(driver);
+        return wikiPage;
     }
 }

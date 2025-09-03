@@ -2,6 +2,7 @@ package pageobjects;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +22,15 @@ public class WikiPage {
             shareholderValue.add(driver.findElements(By.xpath("//table[@class='wikitable sortable jquery-tablesorter']/child::tbody/child::tr/child::td[1]")).get(i).getText());
         }
         return shareholderValue;
+    }
+
+    public List<String> getShareHoldersValue2(){
+        List <String > l = new ArrayList<>();
+        List <WebElement> element = driver.findElements(By.xpath("//table[@class='wikitable sortable jquery-tablesorter']/child::tbody/child::tr/child::td[1]"));
+         for(WebElement a:element){
+                l.add(a.getText());
+         }
+         return l;
     }
 
     public void getShareHoldingValue(){
