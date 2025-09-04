@@ -5,6 +5,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.cucumber.java.tr.Ama;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -16,6 +17,7 @@ import utilities.BrowserBase;
 import utilities.PageObjectManager;
 
 import java.io.IOException;
+import java.util.List;
 
 public class AmazonSteps {
 
@@ -41,7 +43,17 @@ public class AmazonSteps {
 
     @Then("validate the dropdown vaues")
     public void validateTheDropdownVaues() {
-        
+        boolean flag = false ;
+        List<String> val =pom.getAmazonHomePage().extractDropdownValue();
+        for(String j:val ){
+
+            if(j.equals("abc")){
+               flag = true;
+               break;
+            }
+        }
+
+        Assert.assertTrue(flag);
     }
 
     @And("user select the dropdownvalue")
