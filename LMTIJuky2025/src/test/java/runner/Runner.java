@@ -9,6 +9,10 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = {"src/test/resources/testdesign"},
         glue = {"stepdefinations"},
+        plugin = {"pretty",
+                "html:target/reports/testresult.html",
+                "json:target/reports/jsonresult.json",
+                "junit:target/reports/junitresult.xml"},
         tags = "@amazon01"
 
 )

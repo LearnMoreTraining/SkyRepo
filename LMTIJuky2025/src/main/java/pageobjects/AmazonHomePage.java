@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
+import utilities.ExcelHandler;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +33,7 @@ public class AmazonHomePage {
     }
 
     public void enterProductName(String productName){
-        driver.findElement(By.id("twotabsearchtextbox")).sendKeys(productName);
+        driver.findElement(By.id("twotabsearchtextbox")).sendKeys(ExcelHandler.getExcelData("amazoninputs",1,0));
     }
 
     public void clickIcon(){
