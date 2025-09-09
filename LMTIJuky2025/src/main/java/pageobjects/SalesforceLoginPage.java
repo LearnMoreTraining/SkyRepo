@@ -14,7 +14,10 @@ public class SalesforceLoginPage {
     public void enterUserName(String userName){
       //  driver.findElement(By.id("username")).sendKeys(userName);
 
-        driver.findElement(By.xpath("//div[@id='username_container']/child::input[1]")).sendKeys(userName);
+     //   driver.findElement(By.xpath("//div[@id='username_container']/child::input[1]")).sendKeys(userName);
+
+        driver.findElement(By.cssSelector("input[id='username']")).sendKeys(userName);
+        driver.findElement(By.cssSelector("#username")).sendKeys(userName);
 
     }
 
