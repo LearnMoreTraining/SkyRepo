@@ -32,8 +32,12 @@ public class AmazonHomePage {
         categoryDropdown.selectByIndex(index);
     }
 
+    public void enterProductName(String sheet, int row , int col){
+        driver.findElement(By.id("twotabsearchtextbox")).sendKeys(ExcelHandler.getExcelData(sheet,row,col));
+    }
+
     public void enterProductName(String productName){
-        driver.findElement(By.id("twotabsearchtextbox")).sendKeys(ExcelHandler.getExcelData("amazoninputs",1,0));
+        driver.findElement(By.id("twotabsearchtextbox")).sendKeys(productName);
     }
 
     public void clickIcon(){

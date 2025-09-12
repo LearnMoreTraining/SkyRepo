@@ -34,7 +34,7 @@ public class AmazonSteps {
     @When("user extract the dropdown values")
     public void userExtractTheDropdownValues() {
         pom = new PageObjectManager(driver);
-        pom.getAmazonHomePage().enterProductName("iphone");
+        pom.getAmazonHomePage().enterProductName("mosue");
 //        AmazonHomePage amazonHomePage = new AmazonHomePage(driver); //look for the constructor
 //        System.out.println( amazonHomePage.extractDropdownValue());
 

@@ -1,6 +1,6 @@
 package javabasics;
 
-public class CalculatorExample {
+public class CalculatorExample  {
 
     public static void main(String[] args) {
 

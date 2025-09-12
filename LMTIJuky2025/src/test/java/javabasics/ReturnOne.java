@@ -2,6 +2,7 @@ package javabasics;
 
 public class ReturnOne {
 
+   static String name = "lmti";
 
     public int m1(){
         int a = 1 ;

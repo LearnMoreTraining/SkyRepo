@@ -8,18 +8,29 @@ import org.openqa.selenium.safari.SafariDriver;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.time.Duration;
 import java.util.Properties;
 
 public class BrowserBase {
 
     WebDriver driver;
-    public WebDriver launchBrowser() throws IOException {
+    public WebDriver launchBrowser()  {
 
         File file = new File("src/main/resources/configurations/frameworkconfig.properties");
-        FileInputStream fis = new FileInputStream(file); // read
+        FileInputStream fis = null; // read
+        try {
+            fis = new FileInputStream(file);
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
         Properties prop = new Properties();
-        prop.load(fis);
+        try {
+            prop.load(fis);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         if( prop.getProperty("browser").equalsIgnoreCase("chrome")){
          driver = new ChromeDriver();
         }
@@ -34,6 +45,7 @@ public class BrowserBase {
         }
 
         driver.get(prop.getProperty("environment"));
+     driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 
         return driver;
     }
