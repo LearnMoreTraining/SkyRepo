@@ -29,6 +29,7 @@ public class AmazonSteps {
     public void amazonHomePage() throws IOException {
         BrowserBase bb = new BrowserBase();
        driver = bb.launchBrowser();
+       pom = new PageObjectManager(driver);
     }
 
     @When("user extract the dropdown values")
@@ -93,6 +94,8 @@ public class AmazonSteps {
     @Then("verify the page navigation")
     public void verifyThePageNavigation() {
 
+        String expected = "Baby Wishlist";
+        Assert.assertEquals(expected,pom.getAmazonHomePage().getBabyText());
     }
 
     @When("user clicks the baby wishlist link")
@@ -100,5 +103,6 @@ public class AmazonSteps {
 
         AmazonHomePage homePage = new AmazonHomePage(driver);
         homePage.clickBabyWishList();
+        homePage.switchToWindow();
     }
 }

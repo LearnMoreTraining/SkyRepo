@@ -1,6 +1,7 @@
 package pageobjects;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -8,7 +9,9 @@ import org.openqa.selenium.support.ui.Select;
 import utilities.ExcelHandler;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 public class AmazonHomePage {
 
@@ -63,8 +66,32 @@ public class AmazonHomePage {
         Actions action = new Actions(driver);
         action.clickAndHold(element).build().perform();
        // driver.findElement(By.xpath("//span[text()='Baby Wishlist']")).click();
-        driver.findElement(By.linkText("Baby Wishlist")).click();
+        driver.findElement(By.linkText("Baby Wishlist")).sendKeys(Keys.chord(Keys.CONTROL,Keys.ENTER));
        // driver.findElement(By.partialLinkText("got Your Passwo")).click();
+    }
+
+    public void switchToWindow(){
+        String parentWindow = driver.getWindowHandle();
+       Set<String> winProperty = driver.getWindowHandles();
+       String childWindow = null ;
+
+//        Iterator<String> i = winProperty.iterator();
+//        i.next(); //parent window
+//       String childwin = i.next(); //firstchild
+  //      driver.switchTo().window(childwin);
+
+       for(String a:winProperty){
+           if(!a.equals(parentWindow)){
+               childWindow = a;
+               break;
+           }
+       }
+        System.out.println(winProperty);
+        driver.switchTo().window(childWindow);
+    }
+
+    public String getBabyText(){
+       return driver.findElement(By.xpath("//h2[text()='Baby Wishlist']")).getText();
     }
 
 }
