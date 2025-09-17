@@ -9,3 +9,8 @@ Feature: Wiki Page Automation
   Scenario: Wait expample
     Given user navigate to learnmore page
     When user handles the wait
+
+     @frame
+  Scenario:  frame handling
+    Given user navigate to learnmore page
+    When user handle drag and drop

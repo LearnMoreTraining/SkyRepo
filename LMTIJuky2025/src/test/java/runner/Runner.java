@@ -13,7 +13,7 @@ import org.junit.runner.RunWith;
                 "html:target/reports/testresult.html",
                 "json:target/reports/jsonresult.json",
                 "junit:target/reports/junitresult.xml"},
-        tags = "@lmti01 "
+        tags = "@frame"
 
 )
 
