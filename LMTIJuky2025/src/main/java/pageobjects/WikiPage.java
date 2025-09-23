@@ -49,4 +49,14 @@ public class WikiPage {
       String val =  driver.findElement(By.xpath("//table[@class='wikitable sortable jquery-tablesorter']/child::tbody/child::tr["+rowIndex+"]/child::td["+columnIndex+"]")).getText();
         return val;
     }
+
+    public void handleFromDropdown(String code){
+
+        driver.findElement(By.xpath("//a[@value='"+code+"']")).click();
+    }
+
+    public void handleToDropdown(String code){
+
+        driver.findElement(By.xpath("//div[@id='glsControlGroupSearchView_AvailabilitySearchInputSearchViewdestinationStation1_CTNR']//a[@value='"+code+"']")).click();
+    }
 }

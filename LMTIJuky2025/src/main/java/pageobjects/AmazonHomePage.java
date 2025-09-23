@@ -91,6 +91,18 @@ public class AmazonHomePage {
     }
 
     public String getBabyText(){
+
+     //   driver.findElement(By.id("ControlGroupSearchView_AvailabilitySearchInputSearchView_FamilyAndFriends")).isSelected();
+//        String a = driver.findElement(By.cssSelector("#marketDate_2")).getAttribute("style");
+//        //display: block; opacity: 1; pointer-events: inherit;
+//
+//        if(a.contains("1")){
+//
+//        }
+//        else{
+//
+//        }
+//
        return driver.findElement(By.xpath("//h2[text()='Baby Wishlist']")).getText();
     }
 
