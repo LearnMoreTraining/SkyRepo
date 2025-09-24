@@ -1,10 +1,7 @@
 package utilities;
 
 import org.openqa.selenium.WebDriver;
-import pageobjects.AmazonHomePage;
-import pageobjects.AmazonProductPage;
-import pageobjects.SalesforceLoginPage;
-import pageobjects.WikiPage;
+import pageobjects.*;
 
 public class PageObjectManager {
 
@@ -32,5 +29,10 @@ public class PageObjectManager {
     public WikiPage getWikiPage(){
         WikiPage wikiPage = new WikiPage(driver);
         return wikiPage;
+    }
+
+    public AmazonSearchResultPage getSearchPage(){
+        AmazonSearchResultPage searchResultPage = new AmazonSearchResultPage();
+        return searchResultPage;
     }
 }

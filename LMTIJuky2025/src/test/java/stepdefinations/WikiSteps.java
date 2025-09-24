@@ -1,5 +1,6 @@
 package stepdefinations;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
@@ -13,6 +14,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import pageobjects.WikiPage;
 import utilities.BrowserBase;
 import utilities.PageObjectManager;
+import utilities.TestContext;
 
 import java.io.IOException;
 import java.time.Duration;
@@ -20,6 +22,10 @@ import java.time.Duration;
 public class WikiSteps {
 
     WebDriver driver;
+    TestContext context;
+    public WikiSteps(TestContext context){
+        this.context = context;
+    }
 
     @Given("user navigates to wiki page")
     public void navigateWiki() throws IOException {
@@ -75,5 +81,14 @@ public class WikiSteps {
         Actions a = new Actions(driver);
         a.dragAndDrop(drag,drop).build().perform();
         driver.switchTo().defaultContent();
+    }
+
+
+    @And("user select the dropdownvalue")
+    public void selectValue() {
+//        AmazonHomePage amazonHomePage = new AmazonHomePage(driver);
+//        amazonHomePage.selectCategoryDropdownBasedOnValue("search-alias=appliances");
+        context.pageObjectManger.getAmazonHomePage().selectCategoryDropdownBasedOnValue("search-alias=appliances");
+
     }
 }

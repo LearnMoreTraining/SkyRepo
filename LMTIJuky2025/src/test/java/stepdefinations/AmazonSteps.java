@@ -15,39 +15,21 @@ import pageobjects.AmazonHomePage;
 import pageobjects.AmazonSearchResultPage;
 import utilities.BrowserBase;
 import utilities.PageObjectManager;
+import utilities.TestContext;
 
 import java.io.IOException;
 import java.util.List;
 
 public class AmazonSteps {
-
-    WebDriver driver ;
-    PageObjectManager pom;
-
-
-    @Given("user navigates to amazon homepage")
-    public void amazonHomePage() throws IOException {
-        BrowserBase bb = new BrowserBase();
-       driver = bb.launchBrowser();
-       pom = new PageObjectManager(driver);
-    }
-
-    @When("user extract the dropdown values")
-    public void userExtractTheDropdownValues() {
-        pom = new PageObjectManager(driver);
-        pom.getAmazonHomePage().enterProductName("mosue");
-//        AmazonHomePage amazonHomePage = new AmazonHomePage(driver); //look for the constructor
-//        System.out.println( amazonHomePage.extractDropdownValue());
-
-
-        pom.getAmazonHomePage().extractDropdownValue();
-        driver.findElement(By.xpath("[id='eret']")).click();
+    TestContext context;
+    public AmazonSteps(TestContext context){
+        this.context = context;
     }
 
     @Then("validate the dropdown vaues")
     public void validateTheDropdownVaues() {
         boolean flag = false ;
-        List<String> val =pom.getAmazonHomePage().extractDropdownValue();
+        List<String> val =context.pageObjectManger.getAmazonHomePage().extractDropdownValue();
         for(String j:val ){
 
             if(j.equals("abc")){
@@ -59,13 +41,7 @@ public class AmazonSteps {
         Assert.assertTrue(flag);
     }
 
-    @And("user select the dropdownvalue")
-    public void selectValue() {
-//        AmazonHomePage amazonHomePage = new AmazonHomePage(driver);
-//        amazonHomePage.selectCategoryDropdownBasedOnValue("search-alias=appliances");
-        pom.getAmazonHomePage().selectCategoryDropdownBasedOnValue("search-alias=appliances");
 
-    }
 
     @When("user select baby value from the dropdown and navigate to search page")
     public void userSelectBabyValueFromTheDropdown() {
@@ -79,30 +55,30 @@ public class AmazonSteps {
 //        homePage.enterProductName("iphone");
 //        homePage.clickIcon();
 
-        pom.getAmazonHomePage().selectCategoryDropdownBasedOnIndex(8);
-        pom.getAmazonHomePage().enterProductName("iphone");
-        pom.getAmazonHomePage().clickIcon();
+        context.pageObjectManger.getAmazonHomePage().selectCategoryDropdownBasedOnIndex(8);
+        context.pageObjectManger.getAmazonHomePage().enterProductName("iphone");
+        context.pageObjectManger.getAmazonHomePage().clickIcon();
     }
 
     @And("sort the product and select the chepest product")
     public void sortTheProductAndSelectTheChepestProduct() {
-        AmazonSearchResultPage searchResultPage = new AmazonSearchResultPage();
-        searchResultPage.sortProduct();
-        searchResultPage.selectProduct();
+
+        context.pageObjectManger.getSearchPage().sortProduct();
+        context.pageObjectManger.getSearchPage().selectProduct();
     }
 
     @Then("verify the page navigation")
     public void verifyThePageNavigation() {
 
         String expected = "Baby Wishlist";
-        Assert.assertEquals(expected,pom.getAmazonHomePage().getBabyText());
+        Assert.assertEquals(expected,context.pageObjectManger.getAmazonHomePage().getBabyText());
     }
 
     @When("user clicks the baby wishlist link")
     public void userClicksTheBabyWishlistLink() {
 
-        AmazonHomePage homePage = new AmazonHomePage(driver);
-        homePage.clickBabyWishList();
-        homePage.switchToWindow();
+
+        context.pageObjectManger.getAmazonHomePage().clickBabyWishList();
+        context.pageObjectManger.getAmazonHomePage().switchToWindow();
     }
 }

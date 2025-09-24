@@ -18,35 +18,35 @@ public class BrowserBase {
     WebDriver driver;
     public WebDriver launchBrowser()  {
 
-        File file = new File("src/main/resources/configurations/frameworkconfig.properties");
-        FileInputStream fis = null; // read
-        try {
-            fis = new FileInputStream(file);
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-        Properties prop = new Properties();
-        try {
-            prop.load(fis);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        if( prop.getProperty("browser").equalsIgnoreCase("chrome")){
-         driver = new ChromeDriver();
-        }
-        else if(prop.getProperty("browser").equalsIgnoreCase("edge")){
-          driver = new EdgeDriver();
-        }
-        else if(prop.getProperty("browser").equalsIgnoreCase("safari")){
-            driver = new SafariDriver();
-        }
-        else{
-           throw new InvalidArgumentException("enter valid browser name");
-        }
+        if(driver == null) {
 
-        driver.get(prop.getProperty("environment"));
-     driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-    driver.manage().window().maximize();
+            File file = new File("src/main/resources/configurations/frameworkconfig.properties");
+            FileInputStream fis = null; // read
+            try {
+                fis = new FileInputStream(file);
+            } catch (FileNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+            Properties prop = new Properties();
+            try {
+                prop.load(fis);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            if (prop.getProperty("browser").equalsIgnoreCase("chrome")) {
+                driver = new ChromeDriver();
+            } else if (prop.getProperty("browser").equalsIgnoreCase("edge")) {
+                driver = new EdgeDriver();
+            } else if (prop.getProperty("browser").equalsIgnoreCase("safari")) {
+                driver = new SafariDriver();
+            } else {
+                throw new InvalidArgumentException("enter valid browser name");
+            }
+
+            driver.get(prop.getProperty("environment"));
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+            driver.manage().window().maximize();
+        }
         return driver;
     }
 }
