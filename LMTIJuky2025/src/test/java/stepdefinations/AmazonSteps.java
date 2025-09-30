@@ -55,9 +55,11 @@ public class AmazonSteps {
 //        homePage.enterProductName("iphone");
 //        homePage.clickIcon();
 
-        context.pageObjectManger.getAmazonHomePage().selectCategoryDropdownBasedOnIndex(8);
-        context.pageObjectManger.getAmazonHomePage().enterProductName("iphone");
-        context.pageObjectManger.getAmazonHomePage().clickIcon();
+//        context.pageObjectManger.getAmazonHomePage().selectCategoryDropdownBasedOnIndex(8);
+//        context.pageObjectManger.getAmazonHomePage().enterProductName("iphone");
+//        context.pageObjectManger.getAmazonHomePage().clickIcon();
+
+        context.pageObjectManger.getAmazonHomePage().selectCategoryDropdownBasedOnIndex(8).enterProductName("iphone").clickIcon();
     }
 
     @And("sort the product and select the chepest product")

@@ -23,6 +23,9 @@ public class ExcelHandler {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+       finally {
+
+        }
 
         XSSFSheet sheet = workbook.getSheet(sheetname);
       return  sheet.getRow(row).getCell(column).getStringCellValue();
